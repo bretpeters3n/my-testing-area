@@ -1,25 +1,39 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Homepage from "./components/Homepage";
-import Details from "./components/Details";
+import { useNavigate, useParams } from "react-router-dom";
+
+import Page1 from "./components/Page1";
+import Page2 from "./components/Page2";
+import stockAffirmations from "./db/stockAffirmations";
 import "./App.css";
 
-import AdoptedPetContext from "./context/AdoptedPetContext";
-
 function App() {
-  const adoptedPet = useState(null);
+  // const navigate = useNavigate();
 
   // const navigate = useNavigate();
+  const affirmations = stockAffirmations;
 
   return (
     <>
       <BrowserRouter>
-        <AdoptedPetContext.Provider value={adoptedPet}>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/details" element={<Details />} />
-          </Routes>
-        </AdoptedPetContext.Provider>
+        <nav>
+          <Link to="/">
+            <button>Home</button>
+          </Link>
+          <Link to="/page1?type=dog&name=ellie">
+            <button>Page #1</button>
+          </Link>
+          <Link to="/page2?type=cat&name=benji">
+            <button>Page #2</button>
+          </Link>
+          {/* <button onClick={() => navigate("/")}>count</button> */}
+        </nav>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/page1" element={<Page1 />} />
+          <Route path="/page2" element={<Page2 />} />
+        </Routes>
       </BrowserRouter>
     </>
   );
