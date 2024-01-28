@@ -7,18 +7,28 @@ import {
   useSearchParams,
   BrowserRouter,
 } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SearchComponent from "./SearchComponent";
 import { useParams } from "react-router";
 
 const Details = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [queryParameters] = useSearchParams();
   const params = useParams();
   const { itemId, otherParam } = useParams();
   console.log(itemId);
   console.log(otherParam);
   // const { state } = useLocation();
+
+  const runSendVarToPage = () => {
+    console.log("runSendVarToPage() run");
+    navigate("/page3", {
+      state: {
+        itemId: 87,
+        otherParam: "anything you want here",
+      },
+    });
+  };
 
   // Use this to test out feature
   // https://www.codemzy.com/blog/get-set-query-params-react
@@ -31,7 +41,8 @@ const Details = () => {
       <p>Type: {queryParameters.get("type")}</p>
       <p>Name: {queryParameters.get("name")}</p>
 
-      <SearchComponent />
+      <button onClick={() => runSendVarToPage()}>Page #3</button>
+      {/* <SearchComponent /> */}
       {/* </div> */}
     </>
   );
