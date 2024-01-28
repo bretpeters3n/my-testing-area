@@ -43,6 +43,7 @@
 
 nav {
   display: flex;
+  justify-content: center;
   gap: 8px;
   position: fixed;
   top: 0px;
