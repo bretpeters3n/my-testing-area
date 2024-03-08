@@ -10,6 +10,7 @@ import {
 import ShortUniqueId from "short-unique-id";
 import reactLogo from "../assets/react.svg";
 import viteLogo from "/vite.svg";
+// import Buttons from "./Buttons";
 
 const Homepage = () => {
   const [count, setCount] = useState(0);
@@ -36,9 +37,10 @@ const Homepage = () => {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
-        <Link to="/details" className="theme-switcher">
-          Edit/Add
-        </Link>
+        {/* <Buttons /> */}
+        <ul style={{ listStyleType: "none" }}>{/* <Affirmations /> */}</ul>
+        {/* <button onClick={() => affirmations.pop()}>-</button>
+        <button onClick={() => setCount((count) => count + 1)}>+</button> */}
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
